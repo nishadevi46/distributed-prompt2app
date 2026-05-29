@@ -31,16 +31,16 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      
+      # ✅ FIX: ensure mvnw works on Linux runner
       - name: Make mvnw executable
         working-directory: ./${{ env.SERVICE_NAME }}
         run: chmod +x mvnw
 
-      
+      # ✅ FIX: use bash to avoid permission issues
       - name: Build and Push Docker Image with Jib
         working-directory: ./${{ env.SERVICE_NAME }}
         run: |
-          ./mvnw clean compile jib:build \
+          bash ./mvnw clean compile jib:build \
             -Djib.to.image=docker.io/${{ env.IMAGE_NAME }}:${{ github.sha }} \
             -Djib.to.tags=latest \
             -Djib.to.auth.username=${{ secrets.DOCKERHUB_USERNAME }} \
@@ -58,7 +58,6 @@ jobs:
           cluster_name: ${{ secrets.GCP_CLUSTER }}
           location: ${{ secrets.GCP_ZONE }}
 
-  
       - name: Deploy to GKE
         run: |
           kubectl set image deployment/${{ env.SERVICE_NAME }} \
