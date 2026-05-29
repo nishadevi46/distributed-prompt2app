@@ -1,0 +1,2 @@
+com.promt2app.distributed.common_lib.security.SharedSecurityAutoConfiguration
+com.promt2app.distributed.common_lib.error.SharedExceptionAutoConfiguration

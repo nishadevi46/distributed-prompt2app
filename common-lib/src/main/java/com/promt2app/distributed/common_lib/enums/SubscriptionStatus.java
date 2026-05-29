@@ -1,0 +1,9 @@
+package com.promt2app.distributed.common_lib.enums;
+
+public enum SubscriptionStatus {
+  ACTIVE,
+  TRIALING,
+  CANCELED,
+  PAST_DUE,
+  INCOMPLETE
+}
