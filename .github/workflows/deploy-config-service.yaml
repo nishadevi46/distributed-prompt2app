@@ -51,6 +51,7 @@ jobs:
         with:
           cluster_name: ${{ secrets.GCP_CLUSTER }}
           location: ${{ secrets.GCP_ZONE }}
+          use_dns_based_endpoint: true
 
       - name: Deploy to GKE
         run: |
@@ -59,3 +60,4 @@ jobs:
           -n prompt-core
           
           kubectl rollout status deployment/${{ env.SERVICE_NAME }} -n prompt-core
+        
