@@ -60,4 +60,7 @@ jobs:
           -n prompt-core
           
           kubectl rollout status deployment/${{ env.SERVICE_NAME }} -n prompt-core
+      - name: Show server endpoint
+        run: |
+          kubectl config view --minify -o jsonpath='{.clusters[0].cluster.server}'
         
