@@ -5,6 +5,8 @@ metadata:
   namespace: prompt-core
 spec:
   replicas: 1
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app: prompt-frontend
@@ -21,21 +23,8 @@ spec:
             - containerPort: 80
           resources:
             requests:
+              cpu: 20m
+              memory: 64Mi
+            limits:
               cpu: 100m
               memory: 128Mi
-            limits:
-              cpu: 250m
-              memory: 256Mi
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: prompt-frontend
-  namespace: prompt-core
-spec:
-  type: ClusterIP
-  selector:
-    app: prompt-frontend
-  ports:
-    - port: 80
-      targetPort: 80
