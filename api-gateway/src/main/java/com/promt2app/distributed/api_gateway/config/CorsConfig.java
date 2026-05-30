@@ -18,8 +18,15 @@ public class CorsConfig {
         corsConfig.setAllowedOrigins(Arrays.asList(
                 "http://promptapp.in",
                 "http://www.promptapp.in",
+
+                "http://promptapp.8.231.116.253.nip.io",
+                "http://www.promptapp.8.231.116.253.nip.io",
+
+                "http://api.8.231.116.253.nip.io",
+
                 "http://8.231.116.253.nip.io",
                 "http://www.8.231.116.253.nip.io",
+
                 "http://localhost:5173"
         ));
         corsConfig.setMaxAge(3600L);
